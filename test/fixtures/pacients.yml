@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  nume: MyString
+  prenume: MyString
+  cnp: 1
+  data_integrarii: 2011-04-27
+
+two:
+  nume: MyString
+  prenume: MyString
+  cnp: 1
+  data_integrarii: 2011-04-27
