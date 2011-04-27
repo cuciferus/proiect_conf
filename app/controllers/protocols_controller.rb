@@ -1,4 +1,5 @@
 class ProtocolsController < ApplicationController
+  before_filter :find_pacient
   # GET /protocols
   # GET /protocols.xml
   def index
@@ -79,5 +80,9 @@ class ProtocolsController < ApplicationController
       format.html { redirect_to(protocols_url) }
       format.xml  { head :ok }
     end
+  end
+  private
+  def find_pacient
+    @pacient = Pacient.find(params[:pacient_id])
   end
 end
