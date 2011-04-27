@@ -1,7 +1,10 @@
 ProiectConf::Application.routes.draw do
 
+
   resources :pacients do 
-    resources :protocols
+    resources :protocols do 
+      resources :centrus
+    end
   end
 
   # The priority is based upon order of creation:

@@ -38,6 +38,11 @@
         <%= protocol_form.label :delete, 'Sterge' %>
         <%= protocol_form.check_box :delete %>
       </div>
+      <%= protocol_form.fields_for :centrus do |centru_form| %>
+        <p>
+        <%= centru_form.label :nume, 'Numele centrului' %>
+        <%= centru_form.select :nume %>
+        </p>
     <% end %>
   <% end %>
     </p>
