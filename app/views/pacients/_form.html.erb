@@ -27,6 +27,21 @@
     <%= f.label :data_integrarii %><br />
     <%= f.date_select :data_integrarii %>
   </div>
+  <%= f.fields_for :protocols do |protocol_form| %>
+    <p>
+    <div>
+      <%= protocol_form.label :data, 'Data initierii protocolului' %>
+      <%= protocol_form.date_select :data %>
+    </div>
+    <% unless protocol_form.object.new_record? %>
+      <div>
+        <%= protocol_form.label :delete, 'Sterge' %>
+        <%= protocol_form.check_box :delete %>
+      </div>
+    <% end %>
+  <% end %>
+    </p>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -25,6 +25,7 @@ class PacientsController < ApplicationController
   # GET /pacients/new.xml
   def new
     @pacient = Pacient.new
+    @pacient.protocols.build
 
     respond_to do |format|
       format.html # new.html.erb

@@ -1,7 +1,8 @@
 ProiectConf::Application.routes.draw do
-  resources :protocols
 
-  resources :pacients
+  resources :pacients do 
+    resources :protocols
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
