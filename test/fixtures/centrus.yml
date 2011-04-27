@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  nume: MyString
+  protocol: 
+
+two:
+  nume: MyString
+  protocol: 

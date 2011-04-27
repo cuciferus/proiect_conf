@@ -1,0 +1,25 @@
+<h1>Listing centrus</h1>
+
+<table>
+  <tr>
+    <th>Nume</th>
+    <th>Protocol</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @centrus.each do |centru| %>
+  <tr>
+    <td><%= centru.nume %></td>
+    <td><%= centru.protocol %></td>
+    <td><%= link_to 'Show', centru %></td>
+    <td><%= link_to 'Edit', edit_centru_path(centru) %></td>
+    <td><%= link_to 'Destroy', centru, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Centru', new_centru_path %>

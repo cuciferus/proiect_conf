@@ -30,19 +30,19 @@
   <%= f.fields_for :protocols do |protocol_form| %>
     <p>
     <div>
-      <%= protocol_form.label :data, 'Data initierii protocolului' %>
+      <%= protocol_form.label :data, 'Data initierii protocolului' %><br/>
       <%= protocol_form.date_select :data %>
+    </div>
+    <div>
+      Selecteaza centru de care apartine pacientul<br/>
+      <%= protocol_form.select(:centru, Protocol::CENTRE ) %>
     </div>
     <% unless protocol_form.object.new_record? %>
       <div>
         <%= protocol_form.label :delete, 'Sterge' %>
         <%= protocol_form.check_box :delete %>
       </div>
-      <%= protocol_form.fields_for :centrus do |centru_form| %>
-        <p>
-        <%= centru_form.label :nume, 'Numele centrului' %>
-        <%= centru_form.select :nume %>
-        </p>
+
     <% end %>
   <% end %>
     </p>

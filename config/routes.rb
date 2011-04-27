@@ -1,11 +1,16 @@
 ProiectConf::Application.routes.draw do
 
+#deeply nested nu e recomandat incercam altfel
 
   resources :pacients do 
-    resources :protocols do 
-      resources :centrus
-    end
+    resources :protocols, :name_prefix => "pacient_"
   end
+
+  resources :protocols do 
+    resources :centrus, :name_prefix => "protocol_"
+  end
+
+  resources :centrus 
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

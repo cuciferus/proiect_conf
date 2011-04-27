@@ -1,0 +1,25 @@
+<%= form_for(@centru) do |f| %>
+  <% if @centru.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@centru.errors.count, "error") %> prohibited this centru from being saved:</h2>
+
+      <ul>
+      <% @centru.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nume %><br />
+    <%= f.text_field :nume %>
+  </div>
+  <div class="field">
+    <%= f.label :protocol %><br />
+    <%= f.text_field :protocol %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
