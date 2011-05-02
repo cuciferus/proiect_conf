@@ -1,6 +1,11 @@
 <h1>Editing pacient</h1>
 
 <%= render 'form' %>
-
+<h4> Aici merge un buton pentru update doar la protocol</h4>
 <%= link_to 'Show', @pacient %> |
-<%= link_to 'Back', pacients_path %>
+<%= link_to 'Back', pacients_path %>|
+<%= link_to 'Schimba protocolul sau centrul', new_pacient_protocol_path(@pacient) %> <br/>
+<%= link_to 'Baga analize Hemodializa', new_pacient_hemodializa_path(@pacient) %>|
+<%= link_to 'diabets', new_pacient_diabet_path(@pacient) %><br/>
+<%= link_to 'link inteligent',(@pacient.protocols.last.program=='hd' ? new_pacient_hemodializa_path(@pacient) : new_pacient_diabet_path(@pacient)) %>
+<%# debug(@pacient.protocols.last) %>

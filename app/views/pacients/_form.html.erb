@@ -35,12 +35,14 @@
     </div>
     <div>
       Selecteaza centru de care apartine pacientul<br/>
-      <%= protocol_form.select(:centru, Protocol::CENTRE ) %>
+      <%= protocol_form.select(:centru, Protocol::CENTRE ) %><br/>
+      Selecteaza protocolul in care introduci pacientul<br />
+      <%= protocol_form.select(:program, Protocol::PROGRAME ) %>
     </div>
     <% unless protocol_form.object.new_record? %>
-      <div>
-        <%= protocol_form.label :delete, 'Sterge' %>
-        <%= protocol_form.check_box :delete %>
+      <div><!-- asta inca nu merge vom reveni --!>
+        <%# protocol_form.label :_delete, 'Sterge' %>
+        <%# protocol_form.check_box :_delete %>
       </div>
 
     <% end %>

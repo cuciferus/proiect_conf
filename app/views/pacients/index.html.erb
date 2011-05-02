@@ -20,9 +20,10 @@
     <td><%= pacient.cnp %></td>
     <td><%= pacient.data_integrarii %></td>
     <td><%# pacient.protocols.last.data %></td>
-    <td><!-- trebe gasita o solutie mai buna --> 
+    <td><!-- trebe gasita o solutie mai buna, cred ca form_for([@oacient, @protocol]) --> 
       <% for protocol in pacient.protocols %>
         <%= protocol.data %>
+        <%= protocol.program %>
       <% end %>
     </td>
     <td><%= link_to 'Show', pacient %></td>

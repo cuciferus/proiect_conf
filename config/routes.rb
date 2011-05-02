@@ -1,13 +1,21 @@
 ProiectConf::Application.routes.draw do
 
-#deeply nested nu e recomandat incercam altfel
 
+
+#deeply nested nu e recomandat incercam altfel
+  resources :pacients, :has_many => :diabets
+  resources :pacients, :has_many => :protocols
+  resources :pacients, :hay_many => :hemodializas
   resources :pacients do 
-    resources :protocols, :name_prefix => "pacient_"
+    resources :protocols 
+    resources :diabets
+    resources :hemodializas
   end
+  resources :diabets
+  resources :hemodializas
 
   resources :protocols do 
-    resources :centrus, :name_prefix => "protocol_"
+    resources :centrus
   end
 
   resources :centrus 

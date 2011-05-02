@@ -25,7 +25,7 @@ class ProtocolsController < ApplicationController
   # GET /protocols/new
   # GET /protocols/new.xml
   def new
-    @protocol = Protocol.new
+    @protocol = @pacient.protocols.new
 
     respond_to do |format|
       format.html # new.html.erb

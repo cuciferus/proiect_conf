@@ -1,7 +1,7 @@
-<%= form_for(@protocol) do |f| %>
+<%= form_for([@pacient, @protocol]) do |f| %>
   <% if @protocol.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@protocol.errors.count, "error") %> prohibited this protocol from being saved:</h2>
+      <h2>Ai <%= pluralize(@protocol.errors.count, "error") %> in acest formular:</h2>
 
       <ul>
       <% @protocol.errors.full_messages.each do |msg| %>
@@ -15,11 +15,14 @@
     <%= f.label :data %><br />
     <%= f.date_select :data %>
   </div>
-  <div class="field">
-    <%= f.label :pacient %><br />
-    <%= f.text_field :pacient %>
-  </div>
+    <div>
+      Selecteaza centru de care apartine pacientul<br/>
+      <%= f.select(:centru, Protocol::CENTRE ) %><br/>
+      Selecteaza protocolul in care introduci pacientul<br />
+      <%= f.select(:program, Protocol::PROGRAME ) %>
+    </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Adauga protocol'%>
   </div>
 <% end %>

@@ -44,7 +44,9 @@ class PacientsController < ApplicationController
     @pacient = Pacient.new(params[:pacient])
 
     respond_to do |format|
-      if @pacient.save
+      if @pacient.valid? && @pacient.protocols.all?(&:valid?)
+        @pacient.save!
+        @pacient.protocols.each(&:save!)
         format.html { redirect_to(@pacient, :notice => 'Pacient was successfully created.') }
         format.xml  { render :xml => @pacient, :status => :created, :location => @pacient }
       else
