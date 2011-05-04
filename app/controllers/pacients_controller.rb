@@ -84,5 +84,10 @@ class PacientsController < ApplicationController
     end
   end
 
+  #def last_protocol
+    #@protocol = Pacient.find(params[:id]).protocols.last
+  #end
+
+
 
 end

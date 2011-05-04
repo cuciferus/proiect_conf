@@ -13,7 +13,8 @@ class Protocol < ActiveRecord::Base
   PROGRAME = [
     ['Hemodializa', 'hd'],
     ['Dializa Peritoneala','capd'],
-    ['Predializa','bcr']
+    ['Predializa','bcr'],
+    ['Diabet', 'dz']
     ]
 
   validates_inclusion_of :centru, :in =>
