@@ -25,7 +25,7 @@ class HemodializasController < ApplicationController
   # GET /hemodializas/new
   # GET /hemodializas/new.xml
   def new
-    session[:hemodializa_params] || = {}
+    session[:hemodializa_params] ||= {}
     @hemodializa = @pacient.hemodializas.new(session[:hemodializa_params])
     @hemodializa.current_step = session[:hemodializa_step]
 
@@ -46,25 +46,18 @@ class HemodializasController < ApplicationController
     session[:hemodializa_params].deep_merge!(params[:hemodializa]) if params[:hemodializa]
     @hemodializa = @pacient.hemodializas.new(session[:hemodializa_params])
     @hemodializa.current_step = session[:hemodializa_step]
-    if params[:back_button]
-      @hemodializa.previous_step
-    else
-      @hemodializa.next_step
-    end
+    if @hemodializa.valid?
+      if params[:back_button]
+        @hemodializa.previous_step
+      else
+        @hemodializa.next_step
+      end
     session[:hemodializa_step] = @hemodializa.current_step
     render 'new'
-
-
-    respond_to do |format|
-      if @hemodializa.save
-        flash[:notice] = 'Analizele au fost adaugate cu succes.'
-        format.html { redirect_to([@pacient, @hemodializa]) }
-        format.xml  { render :xml => @hemodializa, :status => :created, :location => [@pacient, @hemodializa] }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @hemodializa.errors, :status => :unprocessable_entity }
-      end
     end
+
+
+
   end
 
   # PUT /hemodializas/1
