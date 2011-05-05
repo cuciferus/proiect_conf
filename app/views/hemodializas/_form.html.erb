@@ -1,0 +1,25 @@
+<%= form_for([@pacient, @hemodializa]) do |f| %>
+  <% if @hemodializa.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@hemodializa.errors.count, "error") %> prohibited this hemodializa from being saved:</h2>
+
+      <ul>
+      <% @hemodializa.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+   <div class="field">
+    <%= f.label :data %><br />
+    <%= f.date_select :data %>
+  </div>
+  <%= render "#{@hemodializa.current_step}", :f => f %>
+
+  <div class="actions">
+    <%= f.submit 'urmatoru' %>
+  </div>
+  <div>
+    <%= f.submit "inapoi", :name => "previous_button" unless @hemodializa.first_step? %>
+  </div>
+<% end %>

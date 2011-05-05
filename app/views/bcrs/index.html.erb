@@ -1,0 +1,25 @@
+<h1>Listing bcrs</h1>
+
+<table>
+  <tr>
+    <th>Data</th>
+    <th>Pacient</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @bcrs.each do |bcr| %>
+  <tr>
+    <td><%= bcr.data %></td>
+    <td><%= bcr.pacient %></td>
+    <td><%= link_to 'Show', bcr %></td>
+    <td><%= link_to 'Edit', edit_bcr_path(bcr) %></td>
+    <td><%= link_to 'Destroy', bcr, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Bcr', new_bcr_path %>

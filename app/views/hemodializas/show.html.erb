@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Data:</b>
+  <%# @hemodializa.data %>
+  <%= debug(@hemodializa) %>
+</p>
+
+<p>
+  <b>Pacient:</b>
+  <%= @hemodializa %>
+</p>
+
+
+<%= link_to 'Edit', edit_hemodializa_path(@hemodializa) %> |
+<%= link_to 'Back', hemodializas_path %>

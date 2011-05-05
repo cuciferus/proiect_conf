@@ -1,0 +1,21 @@
+<%= form_for(@capd) do |f| %>
+  <% if @capd.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@capd.errors.count, "error") %> prohibited this capd from being saved:</h2>
+
+      <ul>
+      <% @capd.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :data %><br />
+    <%= f.date_select :data %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

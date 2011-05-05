@@ -1,0 +1,2 @@
+module DiabetsHelper
+end

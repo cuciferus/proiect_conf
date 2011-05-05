@@ -1,0 +1,27 @@
+<h1>Listing hemodializas</h1>
+
+<table>
+  <tr>
+    <th>Data</th>
+    <th>Pacient</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @hemodializas.each do |hemodializa| %>
+  <tr>
+    <td><%= hemodializa.data %></td>
+    <td><%= hemodializa.pacient.nume %></td>
+    <td><%= link_to 'Show', pacient_hemodializa_path(@pacient, hemodializa) %></td>
+    <td><%= link_to 'Edit', edit_pacient_hemodializa_path(@pacient, hemodializa) %></td>
+    <td><%= link_to 'Destroy', pacient_hemodializa_path(@pacient, hemodializa), 
+      :confirm => 'Are you sure?', 
+      :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Hemodializa', new_hemodializa_path %>

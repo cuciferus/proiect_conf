@@ -1,0 +1,2 @@
+module CapdsHelper
+end
