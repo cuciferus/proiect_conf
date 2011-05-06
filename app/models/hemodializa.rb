@@ -23,5 +23,14 @@ class Hemodializa < ActiveRecord::Base
     current_step == steps.first
   end
 
+  def last_step?
+    current_step == steps.last
+  end
 
+  def all_valid?
+    steps.all? do |step|
+      self.current_step = step
+      valid?
+    end
+  end
 end

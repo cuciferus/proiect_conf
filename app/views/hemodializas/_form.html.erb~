@@ -10,16 +10,12 @@
       </ul>
     </div>
   <% end %>
-   <div class="field">
-    <%= f.label :data %><br />
-    <%= f.date_select :data %>
-  </div>
-  <%= render "#{@hemodializa.current_step}", :f => f %>
+  <%= render "#{@hemodializa.current_step}_step", :f => f %>
 
   <div class="actions">
     <%= f.submit 'urmatoru' %>
   </div>
   <div>
-    <%= f.submit "inapoi", :name => "previous_button" %>
+    <%= f.submit "inapoi", :name => "previous_button" unless @hemodializa.first_step? %>
   </div>
 <% end %>

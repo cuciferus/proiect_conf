@@ -25,14 +25,10 @@ class HemodializasController < ApplicationController
   # GET /hemodializas/new
   # GET /hemodializas/new.xml
   def new
-    session[:hemodializa_params] || = {}
+    session[:hemodializa_params] ||= {}
     @hemodializa = @pacient.hemodializas.new(session[:hemodializa_params])
     @hemodializa.current_step = session[:hemodializa_step]
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @hemodializa }
-    end
   end
 
   # GET /hemodializas/1/edit
@@ -46,25 +42,24 @@ class HemodializasController < ApplicationController
     session[:hemodializa_params].deep_merge!(params[:hemodializa]) if params[:hemodializa]
     @hemodializa = @pacient.hemodializas.new(session[:hemodializa_params])
     @hemodializa.current_step = session[:hemodializa_step]
-    if params[:back_button]
-      @hemodializa.previous_step
-    else
-      @hemodializa.next_step
-    end
-    session[:hemodializa_step] = @hemodializa.current_step
-    render 'new'
-
-
-    respond_to do |format|
-      if @hemodializa.save
-        flash[:notice] = 'Analizele au fost adaugate cu succes.'
-        format.html { redirect_to([@pacient, @hemodializa]) }
-        format.xml  { render :xml => @hemodializa, :status => :created, :location => [@pacient, @hemodializa] }
+    if @hemodializa.valid?
+      if params[:back_button]
+        @hemodializa.previous_step
+      elsif @hemodializa.last_step?
+        @hemodializa.save if @hemodializa.all_valid?
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @hemodializa.errors, :status => :unprocessable_entity }
+        @hemodializa.next_step
+        puts @hemodializa.steps.index
+        puts 'salut'
       end
+      if @hemodializa.new_record?
+        render 'new'
+      else
+        session[:hemodializa_step] = session[:hemodializa_params] = nil
+        flash[:notice] = "Am salvat datele de hemo"
+        redirect_to @pacient_hemodializa
     end
+  end
   end
 
   # PUT /hemodializas/1
