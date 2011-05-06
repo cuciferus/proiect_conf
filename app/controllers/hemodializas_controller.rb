@@ -29,10 +29,6 @@ class HemodializasController < ApplicationController
     @hemodializa = @pacient.hemodializas.new(session[:hemodializa_params])
     @hemodializa.current_step = session[:hemodializa_step]
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @hemodializa }
-    end
   end
 
   # GET /hemodializas/1/edit
@@ -46,18 +42,25 @@ class HemodializasController < ApplicationController
     session[:hemodializa_params].deep_merge!(params[:hemodializa]) if params[:hemodializa]
     @hemodializa = @pacient.hemodializas.new(session[:hemodializa_params])
     @hemodializa.current_step = session[:hemodializa_step]
+    puts 'salut'
     if @hemodializa.valid?
       if params[:back_button]
         @hemodializa.previous_step
+      elsif @hemodializa.last_step?
+        @hemodializa.save if @hemodializa.all_valid?
       else
         @hemodializa.next_step
+        puts @hemodializa.steps.index
+        puts 'salut'
       end
-    session[:hemodializa_step] = @hemodializa.current_step
-    render 'new'
+      if @hemodializa.new_record?
+        render 'new'
+      else
+        session[:hemodializa_step] = session[:hemodializa_params] = nil
+        flash[:notice] = "Am salvat datele de hemo"
+        redirect_to @pacient_hemodializa
     end
-
-
-
+  end
   end
 
   # PUT /hemodializas/1

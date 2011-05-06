@@ -10,10 +10,6 @@
       </ul>
     </div>
   <% end %>
-   <div class="field">
-    <%= f.label :data %><br />
-    <%= f.date_select :data %>
-  </div>
   <%= render "#{@hemodializa.current_step}", :f => f %>
 
   <div class="actions">
