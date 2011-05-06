@@ -12,12 +12,11 @@ params = {:pacient => {:nume => 'Georgescu', :prenume=>'Maria', :cnp=>1820912200
 #Pacient.create!(params[:pacient])
 
 
-Pacient.create(:nume => 'Ionescu', :prenume => 'Andrei', :cnp => 21209210009, :data_integrarii => '09/09/1999')
-
-Centru.delete_all
-[{"Georgescu", "Camelia", 2871208100122, 05/05/2011}].each do |pacient|
-  Pacient.create(:pacient)
-end
+#asta nu merge
+#Centru.delete_all
+#[{"Georgescu", "Camelia", 2871208100122, 05/05/2011}].each do |pacient|
+#  Pacient.create(:pacient)
+#end
 
 Centru.delete_all
 #asta nu merge, ideea pare interesanta dar nu cred ca pentru proiectu asta
