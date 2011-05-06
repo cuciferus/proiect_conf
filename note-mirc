@@ -1,1 +1,2 @@
 despre ultimu_protocol: or better: assign @last_protocol in your controller and then: https://gist.github.com/953478
+seed cu nested model:Thing.create do |t| t.foos.build do |f| end; end
