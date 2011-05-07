@@ -43,8 +43,11 @@ class HemodializasController < ApplicationController
     @hemodializa = @pacient.hemodializas.new(session[:hemodializa_params])
     @hemodializa.current_step = session[:hemodializa_step]
     if @hemodializa.valid?
+
       if params[:back_button]
         @hemodializa.previous_step
+      elsif params[:save_ahead]
+        @hemodializa.save if @hemodializa.all_valid?
       elsif @hemodializa.last_step?
         @hemodializa.save if @hemodializa.all_valid?
       else
@@ -57,7 +60,7 @@ class HemodializasController < ApplicationController
     else
       session[:hemodializa_step] = session[:hemodializa_params] = nil
       flash[:notice] = "Am salvat datele de hemo"
-      redirect_to @pacient_hemodializa
+      redirect_to @pacient #asta nu stiu daca merge
     end
   end
 
