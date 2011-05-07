@@ -11,6 +11,6 @@ module PacientsHelper
     when 'brd'
       analiza_path = new_pacient_bcr_path(@pacient)
     end
-    link_to('link cu helper', analiza_path)
+    link_to('Adauga alt set de analize', analiza_path)
   end
 end
