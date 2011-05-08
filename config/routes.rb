@@ -24,6 +24,7 @@ ProiectConf::Application.routes.draw do
   end
 
   resources :centrus 
+  root :to => "pacients#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

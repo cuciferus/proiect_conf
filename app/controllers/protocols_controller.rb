@@ -35,7 +35,7 @@ class ProtocolsController < ApplicationController
 
   # GET /protocols/1/edit
   def edit
-    @protocol = Protocol.find(params[:id])
+    @protocol = @pacient.protocols.find(params[:id])
   end
 
   # POST /protocols

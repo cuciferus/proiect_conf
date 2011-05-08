@@ -1,7 +1,4 @@
 module PacientsHelper
-  def baga_analize
-    html= new_pacient_capd_url(@pacient)
-  end
   def link_to_analize
     case @pacient.last_protocol.program
     when 'capd'

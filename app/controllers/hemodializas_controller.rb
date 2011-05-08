@@ -14,6 +14,7 @@ class HemodializasController < ApplicationController
   # GET /hemodializas/1
   # GET /hemodializas/1.xml
   def show
+    #@pacient = Pacient.find(params[:id])
     @hemodializas = @pacient.hemodializas.find(params[:id])
 
     respond_to do |format|
@@ -43,7 +44,6 @@ class HemodializasController < ApplicationController
     @hemodializa = @pacient.hemodializas.new(session[:hemodializa_params])
     @hemodializa.current_step = session[:hemodializa_step]
     if @hemodializa.valid?
-
       if params[:back_button]
         @hemodializa.previous_step
       elsif params[:save_ahead]
@@ -60,7 +60,7 @@ class HemodializasController < ApplicationController
     else
       session[:hemodializa_step] = session[:hemodializa_params] = nil
       flash[:notice] = "Am salvat datele de hemo"
-      redirect_to @pacient #asta nu stiu daca merge
+      #redirect_to protocol_url(@pacient) #asta nu stiu daca merge
     end
   end
 

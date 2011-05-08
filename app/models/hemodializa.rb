@@ -1,6 +1,10 @@
 class Hemodializa < ActiveRecord::Base
   belongs_to :pacient
   attr_accessible :lunar, :trimestrial, :semestrial
+  attr_accessible :data, :hemoglobina, :hematocrit, :hematii, :leucocite,
+    :trombocite, :uree, :creatinina, :sodiu, :potasiu, :tgo, :tgp, :glicemie, :calciu, :fosfor, 
+    :greutate, :sga, :tas, :tad, :indice_b_mortalitate, :spitalizare, :vit_d, :binder_fosfor,
+    :epo_saptamana, :durata_hd, :heparina_dializa
   attr_writer :current_step
 
   def current_step
