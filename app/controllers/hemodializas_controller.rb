@@ -41,7 +41,7 @@ class HemodializasController < ApplicationController
   # POST /hemodializas.xml
   def create
     session[:hemodializa_params].deep_merge!(params[:hemodializa]) if params[:hemodializa]
-    @hemodializa = @pacient.hemodializas.new(session[:hemodializa_params])
+    @hemodializa = Hemodializa.new(session[:hemodializa_params])
     @hemodializa.current_step = session[:hemodializa_step]
     if @hemodializa.valid?
       if params[:back_button]
@@ -49,6 +49,7 @@ class HemodializasController < ApplicationController
       elsif params[:save_ahead]
         @hemodializa.save if @hemodializa.all_valid?
       elsif @hemodializa.last_step?
+        puts 'inca sunt inainte de eroare'
         @hemodializa.save if @hemodializa.all_valid?
       else
         @hemodializa.next_step
@@ -60,7 +61,7 @@ class HemodializasController < ApplicationController
     else
       session[:hemodializa_step] = session[:hemodializa_params] = nil
       flash[:notice] = "Am salvat datele de hemo"
-      #redirect_to protocol_url(@pacient) #asta nu stiu daca merge
+      redirect_to pacient_url(@pacient) #asta nu stiu daca merge
     end
   end
 
@@ -93,6 +94,6 @@ class HemodializasController < ApplicationController
   end
   private
   def find_pacient
-    @pacient = Pacient.find(params[:pacient_id])
+    @pacient = params[:pacient_id] ? Pacient.find(params[:pacient_id]) : Pacient.find(params[:id])
   end
 end

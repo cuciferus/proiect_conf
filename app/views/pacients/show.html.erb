@@ -1,25 +1,11 @@
 <p id="notice"><%= notice %></p>
 <%= link_to 'Back', pacients_path %>
-
-<p>
-  <b>Nume:</b>
-  <%= @pacient.nume %>
-</p>
-
-<p>
-  <b>Prenume:</b>
-  <%= @pacient.prenume %>
-</p>
-
+<h2> Analizele lui <%= @pacient.nume %> <%= @pacient.prenume %> </h2>
 <p>
   <b>Cnp:</b>
   <%= @pacient.cnp %>
 </p>
 
-<p>
-  <b>Data integrarii:</b>
-  <%= @pacient.data_integrarii %>
-</p>
 <%= render 'hemodializas/index' %>
 <%= link_to 'Editeaza datele pacientului sau ale protocolului', edit_pacient_path(@pacient) %> |
 <%= link_to 'Schimba Protocolul', new_pacient_protocol_path(@pacient) %>|

@@ -14,7 +14,7 @@ class ProtocolsController < ApplicationController
   # GET /protocols/1
   # GET /protocols/1.xml
   def show
-    @protocol = Protocol.find(params[:id])
+    @protocols = @pacient.protocols.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -83,6 +83,6 @@ class ProtocolsController < ApplicationController
   end
   private
   def find_pacient
-    @pacient = Pacient.find(params[:pacient_id])
+    @pacient = params[:pacient_id] ? Pacient.find(params[:pacient_id]) : Pacient.find(params[:id])
   end
 end
