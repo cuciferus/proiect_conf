@@ -13,7 +13,7 @@
   <%= render "#{@hemodializa.current_step}", :f => f %>
 
   <div class="actions">
-    <%= f.submit 'urmatoru' %>
+    <%= f.submit 'urmatoru' , :name=> 'next_form' %>
     <%= f.submit 'salveaza' , :name=> 'save_ahead', :confirm => 'vrei sa bagi doar formularele astea?' %>
   </div>
   <div>

@@ -1,5 +1,9 @@
 class HemodializasController < ApplicationController
-  before_filter :find_pacient
+ def find_hemo
+    @pacient.find(params[:id])
+  end
+
+ before_filter :find_pacient, :except => [:show]
   # GET /hemodializas
   # GET /hemodializas.xml
   def index
@@ -14,13 +18,8 @@ class HemodializasController < ApplicationController
   # GET /hemodializas/1
   # GET /hemodializas/1.xml
   def show
-    #@pacient = Pacient.find(params[:id])
-    @hemodializas = @pacient.hemodializas.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @hemodializa }
-    end
+    puts 'chem show'
+    @hemodializa = Hemodializa.find(params[:id])
   end
 
   # GET /hemodializas/new
@@ -34,8 +33,25 @@ class HemodializasController < ApplicationController
 
   # GET /hemodializas/1/edit
   def edit
+    session[:hemodializa_params].deep_merge!(params[:hemodializa]) if params[:hemodializa]
     @hemodializa = @pacient.hemodializas.find(params[:id])
-  end
+    session[:hemodializa_step] = @hemodializa.steps.first 
+    if @hemodializa.valid?
+      if params[:back_button]
+        @hemodializa.previous_step
+      elsif params[:save_ahead]
+        @hemodializa.save if @hemodializa.all_valid?
+      elsif params[:next_form]
+        @hemodializa.next_step
+      elsif @hemodializa.last_step?
+        puts 'asta e ultimu pas'
+        @hemodializa.save if @hemodializa.all_valid?
+      else
+        @hemodializa.next_step
+      end
+      session[:hemodializa_step] = @hemodializa.current_step
+    end
+ end
 
   # POST /hemodializas
   # POST /hemodializas.xml
@@ -49,7 +65,6 @@ class HemodializasController < ApplicationController
       elsif params[:save_ahead]
         @hemodializa.save if @hemodializa.all_valid?
       elsif @hemodializa.last_step?
-        puts 'inca sunt inainte de eroare'
         @hemodializa.save if @hemodializa.all_valid?
       else
         @hemodializa.next_step
