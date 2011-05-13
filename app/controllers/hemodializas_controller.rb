@@ -18,7 +18,6 @@ class HemodializasController < ApplicationController
   # GET /hemodializas/1
   # GET /hemodializas/1.xml
   def show
-    puts 'chem show'
     @hemodializa = Hemodializa.find(params[:id])
   end
 
@@ -33,25 +32,14 @@ class HemodializasController < ApplicationController
 
   # GET /hemodializas/1/edit
   def edit
-    session[:hemodializa_params].deep_merge!(params[:hemodializa]) if params[:hemodializa]
     @hemodializa = @pacient.hemodializas.find(params[:id])
-    session[:hemodializa_step] = @hemodializa.steps.first 
-    if @hemodializa.valid?
-      if params[:back_button]
-        @hemodializa.previous_step
-      elsif params[:save_ahead]
-        @hemodializa.save if @hemodializa.all_valid?
-      elsif params[:next_form]
-        @hemodializa.next_step
-      elsif @hemodializa.last_step?
-        puts 'asta e ultimu pas'
-        @hemodializa.save if @hemodializa.all_valid?
-      else
-        @hemodializa.next_step
-      end
-      session[:hemodializa_step] = @hemodializa.current_step
-    end
- end
+    puts "acum sunt la pasul #{@hemodializa.current_step}"
+    #if params[:next_form]
+      #@hemodializa.next_step
+    #end
+    #asta merge direct in redirect...nu stiu de ce
+    redirect_to pacient_url(@pacient)
+  end
 
   # POST /hemodializas
   # POST /hemodializas.xml

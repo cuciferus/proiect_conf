@@ -13,10 +13,10 @@
   <%= render "#{@hemodializa.current_step}", :f => f %>
 
   <div class="actions">
-    <%= f.submit 'urmatoru' , :name=> 'next_form' %>
+    <%= f.submit @hemodializa.name_of_next_step , :name=> 'next_form' %>
+    <%= f.submit @hemodializa.name_of_previous_step, :name => "previous_button" unless @hemodializa.first_step? %>
     <%= f.submit 'salveaza' , :name=> 'save_ahead', :confirm => 'vrei sa bagi doar formularele astea?' %>
   </div>
   <div>
-    <%= f.submit "inapoi", :name => "previous_button" unless @hemodializa.first_step? %>
   </div>
 <% end %>

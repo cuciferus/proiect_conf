@@ -14,6 +14,13 @@ class Hemodializa < ActiveRecord::Base
     self.current_step = steps[steps.index(current_step)+1]
   end
 
+  def name_of_next_step
+    steps[steps.index(current_step)+1]
+  end
+  def name_of_previous_step
+    steps[steps.index(current_step)-1]
+  end
+
   def preivous_step
     self.current_step = steps[steps.index(current_step)-1]
   end
