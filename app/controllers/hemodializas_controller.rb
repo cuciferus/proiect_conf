@@ -45,7 +45,8 @@ class HemodializasController < ApplicationController
   # POST /hemodializas.xml
   def create
     session[:hemodializa_params].deep_merge!(params[:hemodializa]) if params[:hemodializa]
-    @hemodializa = Hemodializa.new(session[:hemodializa_params])
+    #@hemodializa = Hemodializa.new(session[:hemodializa_params])
+    @hemodializa = @pacient.hemodializas.create(params[:hemodializa]) #sau :hemodializa_params?
     @hemodializa.current_step = session[:hemodializa_step]
     if @hemodializa.valid?
       if params[:back_button]

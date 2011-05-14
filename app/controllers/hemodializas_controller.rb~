@@ -1,5 +1,9 @@
 class HemodializasController < ApplicationController
-  before_filter :find_pacient
+ def find_hemo
+    @pacient.find(params[:id])
+  end
+
+ before_filter :find_pacient, :except => [:show]
   # GET /hemodializas
   # GET /hemodializas.xml
   def index
@@ -14,12 +18,7 @@ class HemodializasController < ApplicationController
   # GET /hemodializas/1
   # GET /hemodializas/1.xml
   def show
-    @hemodializas = @pacient.hemodializas.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @hemodializa }
-    end
+    @hemodializa = Hemodializa.find(params[:id])
   end
 
   # GET /hemodializas/new
@@ -34,32 +33,39 @@ class HemodializasController < ApplicationController
   # GET /hemodializas/1/edit
   def edit
     @hemodializa = @pacient.hemodializas.find(params[:id])
+    puts "acum sunt la pasul #{@hemodializa.current_step}"
+    #if params[:next_form]
+      #@hemodializa.next_step
+    #end
+    #asta merge direct in redirect...nu stiu de ce
+    redirect_to pacient_url(@pacient)
   end
 
   # POST /hemodializas
   # POST /hemodializas.xml
   def create
     session[:hemodializa_params].deep_merge!(params[:hemodializa]) if params[:hemodializa]
-    @hemodializa = @pacient.hemodializas.new(session[:hemodializa_params])
+    @hemodializa = Hemodializa.new(session[:hemodializa_params])
     @hemodializa.current_step = session[:hemodializa_step]
     if @hemodializa.valid?
       if params[:back_button]
         @hemodializa.previous_step
+      elsif params[:save_ahead]
+        @hemodializa.save if @hemodializa.all_valid?
       elsif @hemodializa.last_step?
         @hemodializa.save if @hemodializa.all_valid?
       else
         @hemodializa.next_step
-        puts @hemodializa.steps.index
-        puts 'salut'
       end
-      if @hemodializa.new_record?
-        render 'new'
-      else
-        session[:hemodializa_step] = session[:hemodializa_params] = nil
-        flash[:notice] = "Am salvat datele de hemo"
-        redirect_to @pacient_hemodializa
+      session[:hemodializa_step] = @hemodializa.current_step
     end
-  end
+    if @hemodializa.new_record?
+      render 'new'
+    else
+      session[:hemodializa_step] = session[:hemodializa_params] = nil
+      flash[:notice] = "Am salvat datele de hemo"
+      redirect_to pacient_url(@pacient) #asta nu stiu daca merge
+    end
   end
 
   # PUT /hemodializas/1
@@ -91,6 +97,6 @@ class HemodializasController < ApplicationController
   end
   private
   def find_pacient
-    @pacient = Pacient.find(params[:pacient_id])
+    @pacient = params[:pacient_id] ? Pacient.find(params[:pacient_id]) : Pacient.find(params[:id])
   end
 end
