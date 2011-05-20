@@ -1,2 +1,12 @@
 despre ultimu_protocol: or better: assign @last_protocol in your controller and then: https://gist.github.com/953478
 seed cu nested model:Thing.create do |t| t.foos.build do |f| end; end
+INTERESANT:
+http://intridea.com/2011/5/13/rails3-gems?utm_source=rubyweekly&utm_medium=email
+despre git:
+MOTIV: $ git status
+error: bad index file sha1 signature
+fatal: index file corrupt
+Solutie:
+ rm -f .git/index
+ git reset
+
