@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110520135146) do
+ActiveRecord::Schema.define(:version => 20110520202740) do
 
   create_table "bcrs", :force => true do |t|
     t.date     "data"
@@ -60,6 +60,18 @@ ActiveRecord::Schema.define(:version => 20110520135146) do
     t.float    "calciu"
     t.float    "fosfor"
     t.float    "inr"
+  end
+
+  create_table "hemo_semestrials", :force => true do |t|
+    t.date     "data"
+    t.float    "aghbs"
+    t.float    "achbs"
+    t.float    "achcv"
+    t.float    "achiv"
+    t.float    "pth"
+    t.integer  "pacient_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "pacients", :force => true do |t|

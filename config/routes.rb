@@ -1,5 +1,6 @@
 ProiectConf::Application.routes.draw do
 
+
 #deeply nested nu e recomandat incercam altfel
   resources :pacients, :has_many => :diabets
   resources :pacients, :has_many => :protocols #, :member => { :last_protocol => :get }
@@ -13,6 +14,7 @@ ProiectConf::Application.routes.draw do
     resources :protocols 
     resources :diabets
     resources :hemo_lunars
+    resources :hemo_semestrials
   end
   resources :diabets
   resources :hemo_lunars
