@@ -2,13 +2,13 @@ require 'test_helper'
 
 class HemodializasControllerTest < ActionController::TestCase
   setup do
-    @hemodializa = hemodializas(:one)
+    @hemo_lunar = hemo_lunars(:one)
   end
 
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:hemodializas)
+    assert_not_nil assigns(:hemo_lunars)
   end
 
   test "should get new" do
@@ -16,34 +16,34 @@ class HemodializasControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create hemodializa" do
+  test "should create hemo_lunar" do
     assert_difference('Hemodializa.count') do
-      post :create, :hemodializa => @hemodializa.attributes
+      post :create, :hemo_lunar => @hemo_lunar.attributes
     end
 
-    assert_redirected_to hemodializa_path(assigns(:hemodializa))
+    assert_redirected_to hemo_lunar_path(assigns(:hemo_lunar))
   end
 
-  test "should show hemodializa" do
-    get :show, :id => @hemodializa.to_param
+  test "should show hemo_lunar" do
+    get :show, :id => @hemo_lunar.to_param
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => @hemodializa.to_param
+    get :edit, :id => @hemo_lunar.to_param
     assert_response :success
   end
 
-  test "should update hemodializa" do
-    put :update, :id => @hemodializa.to_param, :hemodializa => @hemodializa.attributes
-    assert_redirected_to hemodializa_path(assigns(:hemodializa))
+  test "should update hemo_lunar" do
+    put :update, :id => @hemo_lunar.to_param, :hemo_lunar => @hemo_lunar.attributes
+    assert_redirected_to hemo_lunar_path(assigns(:hemo_lunar))
   end
 
-  test "should destroy hemodializa" do
+  test "should destroy hemo_lunar" do
     assert_difference('Hemodializa.count', -1) do
-      delete :destroy, :id => @hemodializa.to_param
+      delete :destroy, :id => @hemo_lunar.to_param
     end
 
-    assert_redirected_to hemodializas_path
+    assert_redirected_to hemo_lunars_path
   end
 end

@@ -4,7 +4,7 @@ ProiectConf::Application.routes.draw do
   resources :pacients, :has_many => :diabets
   resources :pacients, :has_many => :protocols #, :member => { :last_protocol => :get }
   resources :pacients, :has_many => :capds
-  resources :pacients, :hay_many => :hemodializas
+  resources :pacients, :hay_many => :hemo_lunars
   resources :pacients, :hay_many => :bcrs
 
   resources :pacients do 
@@ -12,10 +12,10 @@ ProiectConf::Application.routes.draw do
     resources :bcrs 
     resources :protocols 
     resources :diabets
-    resources :hemodializas
+    resources :hemo_lunars
   end
   resources :diabets
-  resources :hemodializas
+  resources :hemo_lunars
   resources :bcrs
   resources :capds
 

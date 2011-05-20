@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110504043638) do
+ActiveRecord::Schema.define(:version => 20110520135146) do
 
   create_table "bcrs", :force => true do |t|
     t.date     "data"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20110504043638) do
     t.datetime "updated_at"
   end
 
-  create_table "hemodializas", :force => true do |t|
+  create_table "hemo_lunars", :force => true do |t|
     t.date     "data"
     t.integer  "pacient_id"
     t.datetime "created_at"
@@ -59,44 +59,7 @@ ActiveRecord::Schema.define(:version => 20110504043638) do
     t.float    "glicemie"
     t.float    "calciu"
     t.float    "fosfor"
-    t.float    "fier_seric"
-    t.float    "colesterol"
-    t.float    "lipide"
-    t.float    "trigliceride"
-    t.float    "ctlf"
     t.float    "inr"
-    t.float    "aptt"
-    t.float    "ap"
-    t.float    "fibrinogen"
-    t.float    "tquick"
-    t.float    "proteine_serice"
-    t.float    "hemoglobina_glicozilata"
-    t.float    "saturarea_transferinei"
-    t.float    "pcr"
-    t.float    "urr"
-    t.float    "ektv"
-    t.float    "fosfataza_alcalina"
-    t.float    "albumina"
-    t.float    "alfa1"
-    t.float    "alfa2"
-    t.float    "beta"
-    t.float    "gamma"
-    t.float    "aghbs"
-    t.float    "achbs"
-    t.float    "achcv"
-    t.float    "achiv"
-    t.float    "pth"
-    t.float    "greutate"
-    t.integer  "sga"
-    t.integer  "tas"
-    t.integer  "tad"
-    t.float    "indice_b_mortalitate"
-    t.float    "spitalizare"
-    t.integer  "vit_d"
-    t.integer  "binder_fosfor"
-    t.integer  "epo_saptamana"
-    t.integer  "durata_hd"
-    t.float    "heparina_dializa"
   end
 
   create_table "pacients", :force => true do |t|

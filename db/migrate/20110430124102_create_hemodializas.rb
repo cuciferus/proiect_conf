@@ -1,6 +1,6 @@
 class CreateHemodializas < ActiveRecord::Migration
   def self.up
-    create_table :hemodializas do |t|
+    create_table :hemo_lunars do |t|
       t.date :data
       t.references :pacient
 
@@ -9,6 +9,6 @@ class CreateHemodializas < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :hemodializas
+    drop_table :hemo_lunars
   end
 end

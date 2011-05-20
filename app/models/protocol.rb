@@ -1,6 +1,6 @@
 class Protocol < ActiveRecord::Base
   belongs_to :pacient
-  has_many :hemodializas
+  has_many :hemo_lunars
   CENTRE = [
     ['Sibiu', 's'],
     ['Bucuresti semanatoarea','sema'],

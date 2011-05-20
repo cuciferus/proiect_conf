@@ -4,7 +4,7 @@ module PacientsHelper
     when 'capd'
       analiza_path = new_pacient_capd_url(@pacient)
     when 'hd'
-      analiza_path = new_pacient_hemodializa_path(@pacient)
+      analiza_path = new_pacient_hemo_lunar_path(@pacient)
     when 'brd'
       analiza_path = new_pacient_bcr_path(@pacient)
     end
