@@ -3,8 +3,7 @@
   <tr>
     <th>Data</th>
     <th>Creatinina </th>
-  <th> <%= select('nume','ceva', HemoLunar.analize_list, {:prompt=>'selecteaza o analiza'}) %>
-    <%# render 'meniu_analize' %>    </th>
+    <th> <%= select('nume', 'prenume', grouped_options_for_select( HemoLunar.analize_list),:selected=>'creatinina') %>  </th>
     <th></th>
     <th></th>
     <th></th>

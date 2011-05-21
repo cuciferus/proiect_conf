@@ -41,17 +41,7 @@ class ProtocolsController < ApplicationController
   # POST /protocols
   # POST /protocols.xml
   def create
-    @protocol = Protocol.new(params[:protocol])
-
-    respond_to do |format|
-      if @protocol.save
-        format.html { redirect_to(@protocol, :notice => 'Protocol was successfully created.') }
-        format.xml  { render :xml => @protocol, :status => :created, :location => @protocol }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @protocol.errors, :status => :unprocessable_entity }
-      end
-    end
+    @protocol = @pacient.protocols.create(params[:]) #inca nu merge
   end
 
   # PUT /protocols/1

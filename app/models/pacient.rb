@@ -8,7 +8,7 @@ class Pacient < ActiveRecord::Base
   has_many :capds, :dependent => :destroy
   accepts_nested_attributes_for :protocols, :allow_destroy => true
   accepts_nested_attributes_for :hemo_lunars, :allow_destroy => true
-  validates_uniqueness_of :cnp, :message => "Ai deja un pacient cu acest CNP"
+  #validates_uniqueness_of :cnp, :message => "Ai deja un pacient cu acest CNP"
   def last_protocol
     unless self.protocols.last.nil?
       @protocols = self.protocols.last

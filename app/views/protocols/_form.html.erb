@@ -1,4 +1,4 @@
-<%= form_for([@pacient, @protocol]) do |f| %>
+<%= form_for([@pacient, @pacient.protocols.build]) do |f| %>
   <% if @protocol.errors.any? %>
     <div id="error_explanation">
       <h2>Ai <%= pluralize(@protocol.errors.count, "error") %> in acest formular:</h2>
@@ -16,7 +16,7 @@
     <%= f.date_select :data %>
   </div>
     <div>
-      Selecteaza centru de care apartine pacientul<br/>
+      Selecteaza centru de care apartine pacientul<br/>||
       <%= f.select(:centru, Protocol::CENTRE ) %><br/>
       Selecteaza protocolul in care introduci pacientul<br />
       <%= f.select(:program, Protocol::PROGRAME ) %>

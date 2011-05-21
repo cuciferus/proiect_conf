@@ -27,28 +27,7 @@
     <%= f.label :data_integrarii %><br />
     <%= f.date_select :data_integrarii %>
   </div>
-  <%= f.fields_for :protocols do |protocol_form| %>
-    <p>
-    <div>
-      <%= protocol_form.label :data, 'Data initierii protocolului' %><br/>
-      <%= protocol_form.date_select :data %>
-    </div>
-    <div>
-      Selecteaza centru de care apartine pacientul<br/>
-      <%= protocol_form.select(:centru, Protocol::CENTRE ) %><br/>
-      Selecteaza protocolul in care introduci pacientul<br />
-      <%= protocol_form.select(:program, Protocol::PROGRAME ) %>
-    </div>
-    <% unless protocol_form.object.new_record? %>
-      <div><!-- asta inca nu merge vom reveni --!>
-        <%# protocol_form.label :_delete, 'Sterge' %>
-        <%# protocol_form.check_box :_delete %>
-      </div>
-
-    <% end %>
-  <% end %>
-    </p>
-
+  <%= render 'protocols/form' %>
   <div class="actions">
     <%= f.submit %>
   </div>
