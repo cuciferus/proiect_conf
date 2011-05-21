@@ -1,0 +1,2 @@
+module HemoSemestrialsHelper
+end

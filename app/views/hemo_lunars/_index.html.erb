@@ -1,0 +1,28 @@
+
+<table align="center">
+  <tr>
+    <th>Data</th>
+    <th>Creatinina </th>
+  <th> <%= select('nume','ceva', HemoLunar.analize_list, {:prompt=>'selecteaza o analiza'}) %>
+    <%# render 'meniu_analize' %>    </th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <h2> <%= @pacient.nume %></h2>
+<% for hemo_lunar in @pacient.hemo_lunars  %>
+  <tr>
+    <td><%= hemo_lunar.data %></td>
+    <td align="center"><%= hemo_lunar.creatinina %></td>
+    <td align="center"><%= hemo_lunar.hemoglobina %></td>
+    <td><%= link_to 'Show', pacient_hemo_lunar_path(@pacient, hemo_lunar) %></td><!-- astea 3 nu sunt corecte -->
+    <td><%= link_to 'Edit', edit_pacient_hemo_lunar_path(@pacient, hemo_lunar) %></td>
+    <td><%= link_to 'Destroy', pacient_hemo_lunar_path(@pacient, hemo_lunar), 
+      :confirm => 'Are you sure?', 
+      :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

@@ -1,0 +1,41 @@
+<%= form_for([@pacient, @pacient.hemo_semestrials.build]) do |f| %>
+  <% if @hemo_semestrial.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@hemo_semestrial.errors.count, "error") %> prohibited this hemo_semestrial from being saved:</h2>
+
+      <ul>
+      <% @hemo_semestrial.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :data %><br />
+    <%= f.date_select :data %>
+  </div>
+  <div class="field">
+    <%= f.label :aghbs %><br />
+    <%= f.text_field :aghbs %>
+  </div>
+  <div class="field">
+    <%= f.label :achbs %><br />
+    <%= f.text_field :achbs %>
+  </div>
+  <div class="field">
+    <%= f.label :achcv %><br />
+    <%= f.text_field :achcv %>
+  </div>
+  <div class="field">
+    <%= f.label :achiv %><br />
+    <%= f.text_field :achiv %>
+  </div>
+  <div class="field">
+    <%= f.label :pth %><br />
+    <%= f.text_field :pth %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

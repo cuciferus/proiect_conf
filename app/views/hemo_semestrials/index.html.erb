@@ -1,0 +1,35 @@
+<h1>Listing hemo_semestrials</h1>
+
+<table>
+  <tr>
+    <th>Data</th>
+    <th>Aghbs</th>
+    <th>Achbs</th>
+    <th>Achcv</th>
+    <th>Achiv</th>
+    <th>Pth</th>
+    <th>Pacient</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @hemo_semestrials.each do |hemo_semestrial| %>
+  <tr>
+    <td><%= hemo_semestrial.data %></td>
+    <td><%= hemo_semestrial.aghbs %></td>
+    <td><%= hemo_semestrial.achbs %></td>
+    <td><%= hemo_semestrial.achcv %></td>
+    <td><%= hemo_semestrial.achiv %></td>
+    <td><%= hemo_semestrial.pth %></td>
+    <td><%= hemo_semestrial.pacient %></td>
+    <td><%= link_to 'Show', pacient_hemo_semestrials_path %></td>
+    <td><%= link_to 'Edit', edit_pacient_hemo_semestrial_path(hemo_semestrial) %></td><!-- asta nu merge -->
+    <td><%= link_to 'Destroy', hemo_semestrial, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Hemo semestrial', new_pacient_hemo_semestrials_path %>

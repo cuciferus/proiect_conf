@@ -1,0 +1,27 @@
+<h1>Listing hemo_lunars</h1>
+
+<table>
+  <tr>
+    <th>Data</th>
+    <th>Pacient</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @hemo_lunars.each do |hemo_lunar| %>
+  <tr>
+    <td><%= hemo_lunar.data %></td>
+    <td><%= hemo_lunar.pacient.nume %></td>
+    <td><%= link_to 'Show', pacient_hemo_lunar_path(@pacient, hemo_lunar) %></td>
+    <td><%= link_to 'Edit', edit_pacient_hemo_lunar_path(@pacient, hemo_lunar) %></td>
+    <td><%= link_to 'Destroy', pacient_hemo_lunar_path(@pacient, hemo_lunar), 
+      :confirm => 'Are you sure?', 
+      :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New hemo_lunar', new_hemo_lunar_path %>

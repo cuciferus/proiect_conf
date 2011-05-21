@@ -1,0 +1,84 @@
+<%= form_for([@pacient, @pacient.hemo_lunars.build]) do |f| %>
+  <% if @hemo_lunar.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@hemo_lunar.errors.count, "error") %> prohibited this hemo_lunar from being saved:</h2>
+
+      <ul>
+      <% @hemo_lunar.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%# render "#{@hemo_lunar.current_step}", :f => f %>
+ <h3> Protocol lunar </h3>
+   <div class="field">
+    <%= f.label :data %><br />
+    <%= f.date_select :data %>
+  </div>
+<div class="field">
+    <%= f.label :hemoglobina %>
+    <%= f.text_field :hemoglobina %>
+  </div>
+  <div class="field">
+    <%= f.label :hematocrit %>
+    <%= f.text_field :hematocrit %>
+  </div>
+ <div class="field">
+    <%= f.label :hematii %>
+    <%= f.text_field :hematii %>
+  </div>
+ <div class="field">
+    <%= f.label :leucocite %>
+    <%= f.text_field :leucocite %>
+  </div>
+ <div class="field">
+    <%= f.label :trombocite %>
+    <%= f.text_field :trombocite %>
+  </div>
+ <div class="field">
+    <%= f.label :uree %>
+    <%= f.text_field :uree %>
+  </div>
+ <div class="field">
+    <%= f.label :creatinina %>
+    <%= f.text_field :creatinina %>
+  </div>
+ <div class="field">
+    <%= f.label :sodiu %>
+    <%= f.text_field :sodiu %>
+  </div>
+ <div class="field">
+    <%= f.label :potasiu %>
+    <%= f.text_field :potasiu %>
+  </div>
+ <div class="field">
+    <%= f.label :tgo %>
+    <%= f.text_field :tgo %>
+  </div>
+ <div class="field">
+    <%= f.label :tgp %>
+    <%= f.text_field :tgp %>
+  </div>
+ <div class="field">
+    <%= f.label :glicemie %>
+    <%= f.text_field :glicemie %>
+  </div>
+ <div class="field">
+    <%= f.label :calciu %>
+    <%= f.text_field :calciu %>
+  </div>
+ <div class="field">
+    <%= f.label :fosfor %>
+    <%= f.text_field :fosfor %>
+  </div>
+  <div class="actions">
+    <%= f.submit  'salveaza si introdu semestrial', :name=> 'next_form' %>
+    <!-- tre sa ma uit pa laptop exact cum am facut -->
+    <%# f.submit @hemo_lunar.name_of_previous_step, :name => "previous_button" unless @hemo_lunar.first_step? %>
+    <%= f.submit 'salveaza' , :name=> 'save_ahead', :confirm => 'vrei sa bagi doar formularele astea?' %>
+  </div>
+  <div>
+    <%= link_to 'Semestrial', new_pacient_hemo_semestrial_path %>
+  </div>
+<% end %>

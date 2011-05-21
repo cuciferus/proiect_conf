@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  data: 2011-05-20
+  aghbs: 1.5
+  achbs: 1.5
+  achcv: 1.5
+  achiv: 1.5
+  pth: 1.5
+  pacient: 
+
+two:
+  data: 2011-05-20
+  aghbs: 1.5
+  achbs: 1.5
+  achcv: 1.5
+  achiv: 1.5
+  pth: 1.5
+  pacient: 
