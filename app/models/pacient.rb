@@ -2,7 +2,6 @@ class Pacient < ActiveRecord::Base
   has_many :protocols, :dependent => :destroy
   has_many :diabets
   has_many :hemo_lunars, :dependent => :destroy
-  attr_accessible :hemo_lunar_attributes
   has_many :bcrs, :dependent => :destroy
   has_many :hemo_semestrials, :dependent => :destroy
   has_many :capds, :dependent => :destroy

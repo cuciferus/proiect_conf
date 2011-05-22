@@ -27,7 +27,10 @@
     <%= f.label :data_integrarii %><br />
     <%= f.date_select :data_integrarii %>
   </div>
-  <%= render 'protocols/form' %>
+  <%# render 'protocols/form' %>
+  <% f.fields_for :protocols do |builder| %>
+    <%= render "protocols/form", :f => builder %>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>

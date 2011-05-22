@@ -25,7 +25,7 @@ class PacientsController < ApplicationController
   # GET /pacients/new.xml
   def new
     @pacient = Pacient.new
-    @pacient.protocols.build
+    @protocol = @pacient.protocols.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,18 +42,13 @@ class PacientsController < ApplicationController
   # POST /pacients.xml
   def create
     @pacient = Pacient.new(params[:pacient])
-
-    respond_to do |format|
-      if @pacient.valid? && @pacient.protocols.all?(&:valid?)
-        @pacient.save!
-        @pacient.protocols.each(&:save!)
-        format.html { redirect_to(@pacient, :notice => 'Pacient was successfully created.') }
-        format.xml  { render :xml => @pacient, :status => :created, :location => @pacient }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @pacient.errors, :status => :unprocessable_entity }
-      end
+    if @pacient.save
+      flash[:notice] = "bravo ai mai bagat un pacient"
+      redirect_to @pacient
+    else
+      render :action => 'new'
     end
+
   end
 
   # PUT /pacients/1

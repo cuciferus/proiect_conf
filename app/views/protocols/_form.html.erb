@@ -1,16 +1,3 @@
-<%= form_for([@pacient, @pacient.protocols.build]) do |f| %>
-  <% if @protocol.errors.any? %>
-    <div id="error_explanation">
-      <h2>Ai <%= pluralize(@protocol.errors.count, "error") %> in acest formular:</h2>
-
-      <ul>
-      <% @protocol.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="field">
     <%= f.label :data %><br />
     <%= f.date_select :data %>
@@ -22,7 +9,3 @@
       <%= f.select(:program, Protocol::PROGRAME ) %>
     </div>
 
-  <div class="actions">
-    <%= f.submit 'Adauga protocol'%>
-  </div>
-<% end %>
