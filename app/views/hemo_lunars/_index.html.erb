@@ -1,9 +1,11 @@
-
+<!-- asta de ce nu e form? -->
+<h4> daca nu are analize?</h4>
 <table align="center">
   <tr>
     <th>Data</th>
     <th>Creatinina </th>
-    <th> <%= select('nume', 'prenume', grouped_options_for_select( HemoLunar.analize_list),:selected=>'creatinina') %>  </th>
+    <th> <%= select('nume', 'prenume', grouped_options_for_select(HemoLunar.analize_list),{:prompt => 'Selecteaza Analiza'}, 
+                     :onchange => "alert('salut')") %>  </th>
     <th></th>
     <th></th>
     <th></th>
