@@ -18,8 +18,12 @@
     <td><%= pacient.cnp %></td>
     <td align="center"><%= pacient.last_protocol.try(:program) %></td>
     <td><%= link_to 'Show', pacient %></td>
-    <td><%= link_to 'Edit', edit_pacient_path(pacient) %></td>
-    <td><%= link_to 'Destroy', pacient, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% if can? :update, pacient %>
+      <td><%= link_to 'Edit', edit_pacient_path(pacient) %></td>
+    <% end %>
+    <% if can? :destroty, pacient %>
+      <td><%= link_to 'Destroy', pacient, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
