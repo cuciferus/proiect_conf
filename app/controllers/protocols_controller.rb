@@ -1,5 +1,5 @@
 class ProtocolsController < ApplicationController
-  before_filter :find_pacient
+  before_filter :authenticate_user!, :find_pacient
   # GET /protocols
   # GET /protocols.xml
   def index

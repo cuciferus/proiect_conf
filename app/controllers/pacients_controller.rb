@@ -1,6 +1,7 @@
 class PacientsController < ApplicationController
   # GET /pacients
   # GET /pacients.xml
+  before_filter :authenticate_user!
   def index
     @pacients = Pacient.all
 

@@ -7,7 +7,15 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-
+  <div id="user_nav" style= "float :right;">
+    <% if user_signed_in? %>
+      Logat ca <%= current_user.email %>. Nu esti tu?
+      <%= link_to "Sign out", destroy_user_session_path %>
+    <% else %>
+      <%= link_to "Sign up", new_user_registration_path %> sau
+      <%= link_to "Sign in", new_user_session_path %>
+    <% end %>
+  </div>
 <%= yield %>
 
 </body>

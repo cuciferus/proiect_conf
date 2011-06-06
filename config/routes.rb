@@ -1,6 +1,8 @@
 ProiectConf::Application.routes.draw do
 
 
+  devise_for :users
+
 #deeply nested nu e recomandat incercam altfel
   resources :pacients, :has_many => :diabets
   resources :pacients, :has_many => :protocols #, :member => { :last_protocol => :get }
