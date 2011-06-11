@@ -10,3 +10,6 @@ Solutie:
  rm -f .git/index
  git reset
 
+ pentru tabel de analize cu js
+ cuci:  $("#yourbox").change -> $.post('http://url.com', {some_value: $(this).val })
+ [07:33] <denysonique> cuci: thats jQuery + CoffeeScript

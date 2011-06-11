@@ -38,5 +38,7 @@ module ProiectConf
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+    #asta e pentru rails-3.1
+    config.assets.enabled = true
   end
 end

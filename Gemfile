@@ -1,6 +1,13 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.3'
+#gem 'rails', '3.0.3'
+#acu incerc rails-3.1.0 pentru jquery si cofeescript
+gem 'rails', '3.1.0.rc1'
+gem 'json'
+gem 'sass'
+gem 'coffee-script'
+gem 'uglifier'
+
 #gem 'tabulous' --mare bataie de cap
 
 gem 'devise'

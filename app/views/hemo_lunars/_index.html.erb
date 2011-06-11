@@ -5,7 +5,7 @@
     <th>Data</th>
     <th>Creatinina </th>
     <th> <%= select('nume', 'prenume', grouped_options_for_select(HemoLunar.analize_list),{:prompt => 'Selecteaza Analiza'}, 
-                     :onchange => 'alert(this.getValue())') %>  </th>
+                    :remote => true ) %>  </th>
     <th></th>
     <th></th>
     <th></th>
