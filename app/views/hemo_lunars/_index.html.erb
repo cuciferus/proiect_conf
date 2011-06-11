@@ -11,6 +11,7 @@
     <th></th>
   </tr>
   <h2> <%= @pacient.nume %></h2>
+  <div id="analize_pacient">
 <% for hemo_lunar in @pacient.hemo_lunars  %>
   <tr>
     <td><%= hemo_lunar.data %></td>
@@ -23,6 +24,7 @@
       :method => :delete %></td>
   </tr>
 <% end %>
+</div>
 </table>
 
 <br />
