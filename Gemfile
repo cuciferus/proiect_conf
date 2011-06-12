@@ -7,6 +7,8 @@ gem 'json'
 gem 'sass'
 gem 'coffee-script'
 gem 'uglifier'
+#pentru pa laptop
+gem 'therubyracer'
 
 #gem 'tabulous' --mare bataie de cap
 
@@ -14,7 +16,7 @@ gem 'devise'
 gem 'cancan'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 #jquery
-gem 'jquery-rails'
+gem 'jquery-rails', '>= 1.0.3'
 
 # Use unicorn as the web server
 # gem 'unicorn'
