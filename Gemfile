@@ -9,6 +9,8 @@ gem 'coffee-script'
 gem 'uglifier'
 #pentru pa laptop
 gem 'therubyracer'
+#un test arata ca asta ma scapa din mare cacao
+gem 'simple_form'
 
 #gem 'tabulous' --mare bataie de cap
 

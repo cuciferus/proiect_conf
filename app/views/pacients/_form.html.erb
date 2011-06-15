@@ -1,37 +1,17 @@
-<%= form_for(@pacient) do |f| %>
-  <% if @pacient.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@pacient.errors.count, "error") %> prohibited this pacient from being saved:</h2>
+<%= simple_form_for @pacient do |f| %>
 
-      <ul>
-      <% @pacient.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+  <%= f.input :nume %>
+  <%= f.input :prenume %>
+  <%= f.input :cnp %><!-- de facut verificarea de 13 cifre -->
+  <%= f.input :data_integrarii, :as => :date %>
+  <%= f.simple_fields_for :protocol do |g| %>
+    <%= g.input :data, :as => :date %>
+    <%= g.input :centru, :as => :select, :collection => Protocol::CENTRE %>
+    <%= g.input :program, :as => :select, :collection => Protocol::PROGRAME %>
   <% end %>
-
-  <div class="field">
-    <%= f.label :nume %><br />
-    <%= f.text_field :nume %>
-  </div>
-  <div class="field">
-    <%= f.label :prenume %><br />
-    <%= f.text_field :prenume %>
-  </div>
-  <div class="field">
-    <%= f.label :cnp %><br />
-    <%= f.text_field :cnp %>
-  </div>
-  <div class="field">
-    <%= f.label :data_integrarii %><br />
-    <%= f.date_select :data_integrarii %>
-  </div>
-  <%# render 'protocols/form' %>
+    
   <% f.fields_for :protocols do |builder| %>
     <%= render "protocols/form", :f => builder %>
   <% end %>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.button :submit %>
 <% end %>
