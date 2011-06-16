@@ -4,7 +4,7 @@
   <%= f.input :prenume %>
   <%= f.input :cnp %><!-- de facut verificarea de 13 cifre -->
   <%= f.input :data_integrarii, :as => :date %>
-  <%= f.simple_fields_for :protocol do |g| %>
+  <%= f.simple_fields_for :protocols do |g| %>
     <%= g.input :data, :as => :date %>
     <%= g.input :centru, :as => :select, :collection => Protocol::CENTRE %>
     <%= g.input :program, :as => :select, :collection => Protocol::PROGRAME %>
