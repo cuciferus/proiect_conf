@@ -41,7 +41,7 @@ class ProtocolsController < ApplicationController
   # POST /protocols
   # POST /protocols.xml
   def create
-    @protocol = @pacient.protocols.create(params[:]) #inca nu merge
+    @protocol = @pacient.protocols.create(params[:]) #inca nu merge; da nu stiu daca trebe
   end
 
   # PUT /protocols/1

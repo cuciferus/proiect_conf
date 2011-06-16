@@ -1,6 +1,6 @@
     <h3> Protocol lunar </h3>
 <%= simple_form_for @pacient do |d| %>
-  <%= d.simple_fields_for :hemo_lunars do |f| %>
+  <%= d.simple_fields_for :hemo_lunar do |f| %>
     <%= f.input :data, :as => :date %>
     <%= f.input :hemoglobina, :hint => 'mg/dL' %> 
     <%= f.input :hematocrit , :hint => '%'%>

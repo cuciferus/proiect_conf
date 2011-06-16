@@ -22,8 +22,7 @@ class HemoLunarsController < ApplicationController
   # GET /hemo_lunars/new
   # GET /hemo_lunars/new.xml
   def new
-    @hemo_lunar = @pacient.hemo_lunars.new(session[:hemo_lunar_params])
-
+    @hemo_lunar = @pacient.hemo_lunars.new
   end
 
   # GET /hemo_lunars/1/edit
@@ -34,17 +33,7 @@ class HemoLunarsController < ApplicationController
   # POST /hemo_lunars
   # POST /hemo_lunars.xml
   def create
-    @hemo_lunar = @pacient.hemo_lunars.create(params[:hemo_lunar]) 
-    if @hemo_lunar.save && params[:next_form]
-      redirect_to @pacient.hemo_semestrials.create
-    end
-    if @hemo_lunar.new_record?
-      render 'new'
-    else
-      session[:hemo_lunar_step] = session[:hemo_lunar_params] = nil
-      flash[:notice] = "Am salvat datele de hemo"
-      redirect_to pacient_url(@pacient)
-    end
+    @hemo_lunar = @pacient.protocols.create(params[:id]) #inca nu merge
   end
 
   # PUT /hemo_lunars/1
